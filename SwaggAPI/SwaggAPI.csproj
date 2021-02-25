@@ -9,10 +9,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 <!--This will generate documation file to the interface-->
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
