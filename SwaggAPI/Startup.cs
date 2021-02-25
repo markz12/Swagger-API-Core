@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +39,12 @@ namespace SwaggAPI
                         Description = "Demo API for showing Swagger", // Description for Swagger API
                         Version = "v1" // Version of API
                     });
+
+                //this will going to read the documented model type
+                var filename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"; // Get the assembly filename
+                var filePath = Path.Combine(AppContext.BaseDirectory, filename); // filepath for documantation
+                options.IncludeXmlComments(filePath); // execute the documented file
+
             });
             #endregion
         }
