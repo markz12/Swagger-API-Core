@@ -27,16 +27,18 @@ namespace SwaggAPI
         {
             services.AddControllers();
 
+            #region Add Swagger Services
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1",
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
-                        Title = "Swagger Demo API",
-                        Description = "Demo API for showing Swagger",
-                        Version = "v1"
+                        Title = "Swagger Demo API - Mark Vanz", // Title for Swagger UI
+                        Description = "Demo API for showing Swagger", // Description for Swagger API
+                        Version = "v1" // Version of API
                     });
             });
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,12 +60,14 @@ namespace SwaggAPI
                 endpoints.MapControllers();
             });
 
+            #region Use Swagger Service and Interface
             app.UseSwagger(); // Use Swagger
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo API");
-                options.RoutePrefix = "";
+                options.RoutePrefix = ""; // for default route
             });
+            #endregion
         }
     }
 }
